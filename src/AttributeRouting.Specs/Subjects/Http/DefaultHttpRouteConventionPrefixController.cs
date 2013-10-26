@@ -3,8 +3,8 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Specs.Subjects.Http
 {
-    [DefaultHttpRouteConvention]
-    [RoutePrefix("Prefix")]
+    [DefaultHttpUrlRouteConvention]
+    [UrlRoutePrefix("Prefix")]
     public class DefaultHttpRouteConventionPrefixController : ApiController
     {
 

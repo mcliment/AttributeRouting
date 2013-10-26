@@ -192,10 +192,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Generating area routes with the default ctor of the RouteAreaAttribute")]
-        public virtual void GeneratingAreaRoutesWithTheDefaultCtorOfTheRouteAreaAttribute()
+        [NUnit.Framework.DescriptionAttribute("Generating area routes with the default ctor of the UrlRouteAreaAttribute")]
+        public virtual void GeneratingAreaRoutesWithTheDefaultCtorOfTheUrlRouteAreaAttribute()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generating area routes with the default ctor of the RouteAreaAttribute", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generating area routes with the default ctor of the UrlRouteAreaAttribute", ((string[])(null)));
 #line 41
 this.ScenarioSetup(scenarioInfo);
 #line 42

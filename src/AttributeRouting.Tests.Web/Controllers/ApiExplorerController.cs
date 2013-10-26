@@ -4,7 +4,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RoutePrefix("Api/Explorer")]
+    [UrlRoutePrefix("Api/Explorer")]
     public class ApiExplorerController : Controller
     {
         [GET("")]

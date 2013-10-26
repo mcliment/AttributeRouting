@@ -4,7 +4,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RouteArea("Cms", AreaUrl = "{culture}/Cms")]
+    [UrlRouteArea("Cms", AreaUrl = "{culture}/Cms")]
     public class CulturePrefixController : Controller
     {
         [GET("Home")]
@@ -14,8 +14,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Area")]
-    [RoutePrefix("Prefix")]
+    [UrlRouteArea("Area")]
+    [UrlRoutePrefix("Prefix")]
     public class TranslationController : Controller
     {
         [GET("Index")]
@@ -25,8 +25,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("CustomArea", TranslationKey = "CustomAreaKey")]
-    [RoutePrefix("CustomPrefix", TranslationKey = "CustomPrefixKey")]
+    [UrlRouteArea("CustomArea", TranslationKey = "CustomAreaKey")]
+    [UrlRoutePrefix("CustomPrefix", TranslationKey = "CustomPrefixKey")]
     public class TranslationWithCustomKeysController : Controller
     {
         [GET("CustomIndex", TranslationKey = "CustomRouteKey")]
@@ -36,7 +36,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RoutePrefix("Translate/Actions")]
+    [UrlRoutePrefix("Translate/Actions")]
     public class TranslateActionsController : Controller
     {
         [GET("Index")]

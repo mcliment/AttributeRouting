@@ -2,7 +2,7 @@
 
 namespace AttributeRouting.Tests.Web.Areas.Api.Controllers
 {
-    [RoutePrefix("Constraints")]
+    [UrlRoutePrefix("Constraints")]
     public class ConstraintsController : BaseApiController
     {
         [GET("Int/{x:int}")]

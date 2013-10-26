@@ -2,7 +2,7 @@
 
 <h3>Quickstart</h3>
 <p>
-    Use RouteAttributes to decorate actions in your controllers. 
+    Use UrlRouteAttributes to decorate actions in your controllers. 
     There is a specific RouteAtribute for each of the four HTTP verbs: 
     GET, PUT, POST, and DELETE.
 </p>
@@ -69,7 +69,7 @@
     </code>
 </pre>
 <p>
-    Once you have added the RouteAttributes to your action methods,
+    Once you have added the UrlRouteAttributes to your action methods,
     you will need to have the AttributeRouting library find them and create
     corresponding routes in the MVC RouteTable. You can do this in your Global.asax:
 </p>

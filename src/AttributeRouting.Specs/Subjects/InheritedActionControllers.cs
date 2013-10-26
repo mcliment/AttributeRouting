@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RoutePrefix("InheritedActions")]
+    [UrlRoutePrefix("InheritedActions")]
     public class SuperController : Controller
     {
         [GET("Index")]
@@ -24,15 +24,15 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Super")]
+    [UrlRouteArea("Super")]
     public class SuperWithAreaController : SuperController { }
 
-    [RouteArea("Derived")]
+    [UrlRouteArea("Derived")]
     public class DerivedWithAreaController : SuperWithAreaController { }
 
-    [RoutePrefix("InheritedActions/Super")]
+    [UrlRoutePrefix("InheritedActions/Super")]
     public class SuperWithPrefixController : SuperController { }
 
-    [RoutePrefix("InheritedActions/Derived")]
+    [UrlRoutePrefix("InheritedActions/Derived")]
     public class DerivedWithPrefixController : SuperController { }
 }

@@ -175,10 +175,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Inline constraints specified in the RoutePrefixAttribute")]
-        public virtual void InlineConstraintsSpecifiedInTheRoutePrefixAttribute()
+        [NUnit.Framework.DescriptionAttribute("Inline constraints specified in the UrlRoutePrefixAttribute")]
+        public virtual void InlineConstraintsSpecifiedInTheUrlRoutePrefixAttribute()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inline constraints specified in the RoutePrefixAttribute", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inline constraints specified in the UrlRoutePrefixAttribute", ((string[])(null)));
 #line 65
 this.ScenarioSetup(scenarioInfo);
 #line 67
@@ -207,10 +207,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Inline constraints specified in the RouteAreaAttribute")]
-        public virtual void InlineConstraintsSpecifiedInTheRouteAreaAttribute()
+        [NUnit.Framework.DescriptionAttribute("Inline constraints specified in the UrlRouteAreaAttribute")]
+        public virtual void InlineConstraintsSpecifiedInTheUrlRouteAreaAttribute()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inline constraints specified in the RouteAreaAttribute", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inline constraints specified in the UrlRouteAreaAttribute", ((string[])(null)));
 #line 77
 this.ScenarioSetup(scenarioInfo);
 #line 79

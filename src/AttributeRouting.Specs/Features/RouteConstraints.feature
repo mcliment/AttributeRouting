@@ -62,7 +62,7 @@ Scenario: Multiple inline constraints per url segment
 	And the parameter "width" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
 	And the parameter "height" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
 
-Scenario: Inline constraints specified in the RoutePrefixAttribute
+Scenario: Inline constraints specified in the UrlRoutePrefixAttribute
 	# MVC
 	Given I have registered the routes for the PrefixedInlineRouteConstraintsController
 	When I fetch the routes for the PrefixedInlineRouteConstraints controller's Index action
@@ -74,7 +74,7 @@ Scenario: Inline constraints specified in the RoutePrefixAttribute
 	Then the route url is "Http-Prefixed-Inline-Constraints/{id}/Howdy"
 	And the parameter "id" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
 
-Scenario: Inline constraints specified in the RouteAreaAttribute
+Scenario: Inline constraints specified in the UrlRouteAreaAttribute
 	# MVC
 	Given I have registered the routes for the AreaInlineRouteConstraintsController
 	When I fetch the routes for the AreaInlineRouteConstraints controller's Index action

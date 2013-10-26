@@ -36,7 +36,7 @@ namespace AttributeRouting.Specs.Subjects
             return Content("");
         }
 
-        [Web.Mvc.Route("AnyVerb")]
+        [UrlRoute("AnyVerb")]
         public ActionResult AnyVerb()
         {
             return Content("");
@@ -66,7 +66,7 @@ namespace AttributeRouting.Specs.Subjects
             return Content("");
         }
 
-        [Web.Mvc.Route]
+        [UrlRoute]
         public ActionResult RouteDefault()
         {
             return Content("");

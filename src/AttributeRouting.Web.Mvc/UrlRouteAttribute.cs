@@ -10,13 +10,13 @@ namespace AttributeRouting.Web.Mvc
     /// The route information for an action in Mvc Controllers.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]
-    public class RouteAttribute : ActionMethodSelectorAttribute, IRouteAttribute
+    public class UrlRouteAttribute : ActionMethodSelectorAttribute, IUrlRouteAttribute
     {
         /// <summary>
         /// Specify the route information for an action. 
         /// The route URL will be the name of the action.
         /// </summary>
-        public RouteAttribute()
+        public UrlRouteAttribute()
         {
             HttpMethods = new string[0];
             ActionPrecedence = int.MaxValue;
@@ -28,7 +28,7 @@ namespace AttributeRouting.Web.Mvc
         /// Specify the route information for an action.
         /// </summary>
         /// <param name="routeUrl">The url that is associated with this action</param>
-        public RouteAttribute(string routeUrl)
+        public UrlRouteAttribute(string routeUrl)
             : this()
         {
             if (routeUrl == null) throw new ArgumentNullException("routeUrl");
@@ -41,7 +41,7 @@ namespace AttributeRouting.Web.Mvc
         /// The route URL will be the name of the action.
         /// </summary>
         /// <param name="allowedMethods">The httpMethods against which to constrain the route</param>
-        public RouteAttribute(params HttpVerbs[] allowedMethods)
+        public UrlRouteAttribute(params HttpVerbs[] allowedMethods)
             : this()
         {
             HttpMethods = allowedMethods.Select(m => m.ToString().ToUpperInvariant()).ToArray();
@@ -52,7 +52,7 @@ namespace AttributeRouting.Web.Mvc
         /// </summary>
         /// <param name="routeUrl">The url that is associated with this action</param>
         /// <param name="allowedMethods">The httpMethods against which to constrain the route</param>
-        public RouteAttribute(string routeUrl, params HttpVerbs[] allowedMethods)
+        public UrlRouteAttribute(string routeUrl, params HttpVerbs[] allowedMethods)
             : this(routeUrl)
         {
             HttpMethods = allowedMethods.Select(m => m.ToString().ToUpperInvariant()).ToArray();

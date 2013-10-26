@@ -5,7 +5,7 @@ namespace AttributeRouting.Web.Mvc
     /// <summary>
     /// Defines a POST route for an action in Mvc Controllers.
     /// </summary>
-    public class POSTAttribute : RouteAttribute
+    public class POSTAttribute : UrlRouteAttribute
     {
         /// <summary>
         /// Specify a route for a POST request.

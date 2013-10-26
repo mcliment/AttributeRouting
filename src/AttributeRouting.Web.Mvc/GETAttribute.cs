@@ -5,7 +5,7 @@ namespace AttributeRouting.Web.Mvc
     /// <summary>
     /// Defines a GET route for an action in Mvc Controllers.
     /// </summary>
-    public class GETAttribute : RouteAttribute
+    public class GETAttribute : UrlRouteAttribute
     {
         /// <summary>
         /// Specify a route for a GET request.

@@ -5,7 +5,7 @@ namespace AttributeRouting.Web.Mvc
     /// <summary>
     /// Defines a PUT route for an action in Mvc Controllers.
     /// </summary>
-    public class PUTAttribute : RouteAttribute
+    public class PUTAttribute : UrlRouteAttribute
     {
         /// <summary>
         /// Specify a route for a PUT request.

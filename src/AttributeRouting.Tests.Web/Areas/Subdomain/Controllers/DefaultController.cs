@@ -7,7 +7,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Areas.Subdomain.Controllers
 {
-    [RouteArea("Subdomain", Subdomain = "sub")]
+    [UrlRouteArea("Subdomain", Subdomain = "sub")]
     public class DefaultController : Controller
     {
         [GET("")]

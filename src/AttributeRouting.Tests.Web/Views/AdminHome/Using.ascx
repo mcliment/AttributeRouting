@@ -117,7 +117,7 @@
     
 <h4>Areas</h4>
 <p>
-    Areas can be created with the class-level RouteAreaAttribute.
+    Areas can be created with the class-level UrlRouteAreaAttribute.
     All the routes defined in the controller will be mapped to the area specified.
 </p>
 <pre class="code">
@@ -135,7 +135,7 @@
 </pre>
 <p>
     If you are defining more than one controller for an area, consider using a base
-    controller decorated with the RouteAreaAttribute, and deriving all the controllers
+    controller decorated with the UrlRouteAreaAttribute, and deriving all the controllers
     in the area from the base controller.
 </p>
 <pre class="code">
@@ -163,7 +163,7 @@
     
 <h4>Nested Routes</h4>
 <p>
-    Nesting routes is simple using the class-level RoutePrefixAttribute.
+    Nesting routes is simple using the class-level UrlRoutePrefixAttribute.
     All the routes in a decorated controller will have the specified url prefix
     shoved in front of the url defined in the route.
 </p>
@@ -187,7 +187,7 @@
     </code>
 </pre>
 <p>
-    Of course, you can always type out the full nested path in the RouteAttribute
+    Of course, you can always type out the full nested path in the UrlRouteAttribute
     decorating the action method. It's your call. The above example rewritten looks like this:
 </p>
 <pre class="code">

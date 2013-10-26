@@ -101,9 +101,9 @@
     <Compile Include="GETAttribute.cs" />
     <Compile Include="POSTAttribute.cs" />
     <Compile Include="PUTAttribute.cs" />
-    <Compile Include="RouteAttribute.cs" />
+    <Compile Include="UrlRouteAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestfulRouteConventionAttribute.cs" />
+    <Compile Include="RestfulUrlRouteConventionAttribute.cs" />
     <Compile Include="RouteCollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

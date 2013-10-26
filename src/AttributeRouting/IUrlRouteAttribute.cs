@@ -7,7 +7,7 @@ namespace AttributeRouting
     /// In System.Web.Mvc, that means deriving from ActionMethodSelectorAttribute.
     /// In System.Web.Http, that means deriving from IActionHttpMethodProvider.
     /// </remarks>
-    public interface IRouteAttribute 
+    public interface IUrlRouteAttribute 
     {
         /// <summary>
         /// The url for this action.
@@ -111,13 +111,13 @@ namespace AttributeRouting
         bool? AppendTrailingSlashFlag { get; }
 
         /// <summary>
-        /// If true, will ignore any route prefix specified via the <see cref="RoutePrefixAttribute"/>
+        /// If true, will ignore any route prefix specified via the <see cref="UrlRoutePrefixAttribute"/>
         /// when building up the route URL.
         /// </summary>
         bool IgnoreRoutePrefix { get; set; }
 
         /// <summary>
-        /// If true, will ignore any area URL prefix specified via the <see cref="RouteAreaAttribute"/>
+        /// If true, will ignore any area URL prefix specified via the <see cref="UrlRouteAreaAttribute"/>
         /// when building up the route URL.
         /// </summary>
         bool IgnoreAreaUrl { get; set; }

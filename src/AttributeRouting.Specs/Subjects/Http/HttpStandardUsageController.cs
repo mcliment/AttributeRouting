@@ -35,7 +35,7 @@ namespace AttributeRouting.Specs.Subjects.Http
             return "";
         }
 
-        [HttpRoute("api/AnyVerb")]
+        [HttpUrlRoute("api/AnyVerb")]
         public string AnyVerb()
         {
             return "";

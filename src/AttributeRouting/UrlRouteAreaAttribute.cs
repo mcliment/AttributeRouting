@@ -6,19 +6,19 @@ namespace AttributeRouting
     /// Defines an area shared by all the routes defined in this controller.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public class RouteAreaAttribute : Attribute
+    public class UrlRouteAreaAttribute : Attribute
     {
         /// <summary>
         /// Defines an area shared by all the routes defined in this controller.
         /// The area name will be the most immediate section of the namespace for the controller.
         /// </summary>
-        public RouteAreaAttribute() { }
+        public UrlRouteAreaAttribute() { }
 
         /// <summary>
         /// Defines an area shared by all the routes defined in this controller.
         /// </summary>
         /// <param name="areaName">The name of the containing area</param>
-        public RouteAreaAttribute(string areaName)
+        public UrlRouteAreaAttribute(string areaName)
             : this()
         {
             if (areaName == null) throw new ArgumentNullException("areaName");

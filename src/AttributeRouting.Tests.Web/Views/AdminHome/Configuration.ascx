@@ -4,7 +4,7 @@
 
 <h4>Overview</h4>
 <p>
-    To map the routes defined via RouteAttributes, you must use an overload of the
+    To map the routes defined via UrlRouteAttributes, you must use an overload of the
     MapAttributeRoutes extension. There are three ways to map your routes.
     The first looks like this:
 </p>
@@ -22,7 +22,7 @@
 </pre>
 <p>
     This overload tells the AttributeRouting library to scan the calling assembly
-    for any RouteAttributes it can find, and create routes in the MVC RouteTable 
+    for any UrlRouteAttributes it can find, and create routes in the MVC RouteTable 
     for each one found.
 </p>
 <p>
@@ -33,7 +33,7 @@
 
 <h4>Scanning Assemblies</h4>
 <p>
-    To specify the assemblies to scan for RouteAttributes, use either the ScanAssemblyOf or ScanAssembly method.
+    To specify the assemblies to scan for UrlRouteAttributes, use either the ScanAssemblyOf or ScanAssembly method.
 </p>
 <pre class="code">
     <code class="csharp boc-highlight[3,4]">
@@ -100,7 +100,7 @@
     So what about specifying the route precendence among the actions inside your controller? 
     The routes for the actions will be added in the order in which the actions are declared.
     And remember, if you have multiple routes mapped to a single action,
-    you can specify a value for the Order property of the RouteAttributes.
+    you can specify a value for the Order property of the UrlRouteAttributes.
 </p>
 
 <h4>Constraining Route Parameters Mapped to Primitive Types</h4>

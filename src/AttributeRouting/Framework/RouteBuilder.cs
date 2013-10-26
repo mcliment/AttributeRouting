@@ -495,7 +495,7 @@ namespace AttributeRouting.Framework
             if (urlParameterNames.Any(n => n.ValueEquals("area")))
             {
                 throw new AttributeRoutingException(
-                    "{area} url parameters are not allowed. Specify the area name by using the RouteAreaAttribute.");
+                    "{area} url parameters are not allowed. Specify the area name by using the UrlRouteAreaAttribute.");
             }
 
             // If we are lowercasing routes, then lowercase everything but the route params

@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RoutePrefix("Danger")]
+    [UrlRoutePrefix("Danger")]
     public class DangerController : Controller
     {
         [GET("")]

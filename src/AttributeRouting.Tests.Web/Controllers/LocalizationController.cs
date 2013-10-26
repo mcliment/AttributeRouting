@@ -3,8 +3,8 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RouteArea("Localization", AreaUrl = "{culture}/Localization")]
-    [RoutePrefix("Prefix")]
+    [UrlRouteArea("Localization", AreaUrl = "{culture}/Localization")]
+    [UrlRoutePrefix("Prefix")]
     public class LocalizationController : Controller
     {
         [GET("Index")]

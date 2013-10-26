@@ -3,7 +3,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Tests.Web.Areas.Api.Controllers
 {
-    [DefaultHttpRouteConvention]
+    [DefaultHttpUrlRouteConvention]
     public class ConventionController : BaseApiController
     {
         // GET /api/<controller>

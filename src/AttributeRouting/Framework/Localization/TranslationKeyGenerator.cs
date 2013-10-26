@@ -49,10 +49,10 @@ namespace AttributeRouting.Framework.Localization
         public string AreaUrl<TController>() {
             var controllerType = typeof(TController);
 
-            var areaAttribute = controllerType.GetCustomAttribute<RouteAreaAttribute>(true);
+            var areaAttribute = controllerType.GetCustomAttribute<UrlRouteAreaAttribute>(true);
             if (areaAttribute == null)
                 throw new AttributeRoutingException(
-                    "There is no RouteAreaAttribute associated with {0}.".FormatWith(controllerType.FullName));
+                    "There is no UrlRouteAreaAttribute associated with {0}.".FormatWith(controllerType.FullName));
 
             return AreaUrl(areaAttribute.AreaName);
         }
@@ -64,12 +64,12 @@ namespace AttributeRouting.Framework.Localization
         public string RoutePrefixUrl<TController>() {
             var controllerType = typeof(TController);
 
-            var routePrefixAttribute = controllerType.GetCustomAttribute<RoutePrefixAttribute>(true);
-            if (routePrefixAttribute == null)
+            var urlRoutePrefixAttribute = controllerType.GetCustomAttribute<UrlRoutePrefixAttribute>(true);
+            if (urlRoutePrefixAttribute == null)
                 throw new AttributeRoutingException(
-                    "There is no RoutePrefixAttribute associated with {0}.".FormatWith(controllerType.FullName));
+                    "There is no UrlRoutePrefixAttribute associated with {0}.".FormatWith(controllerType.FullName));
 
-            var areaAttribute = controllerType.GetCustomAttribute<RouteAreaAttribute>(true);
+            var areaAttribute = controllerType.GetCustomAttribute<UrlRouteAreaAttribute>(true);
 
             return RoutePrefixUrl(areaAttribute.SafeGet(a => a.AreaName), controllerType.GetControllerName());
         }
@@ -81,7 +81,7 @@ namespace AttributeRouting.Framework.Localization
         /// <param name="action">Expression pointing to the the action method</param>
         public string RouteUrl<TController>(Expression<Func<TController, object>> action) {
             var controllerType = typeof(TController);
-            var areaAttribute = controllerType.GetCustomAttribute<RouteAreaAttribute>(true);
+            var areaAttribute = controllerType.GetCustomAttribute<UrlRouteAreaAttribute>(true);
             var actionMemberInfo = ExpressionHelper.GetMethodInfo(action);
 
             return RouteUrl(areaAttribute.SafeGet(a => a.AreaName),

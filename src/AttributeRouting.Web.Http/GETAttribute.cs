@@ -5,7 +5,7 @@ namespace AttributeRouting.Web.Http
     /// <summary>
     /// Defines a route for an action constrained to requests providing an httpMethod value of GET.
     /// </summary>
-    public class GETAttribute : HttpRouteAttribute
+    public class GETAttribute : HttpUrlRouteAttribute
     {
         /// <summary>
         /// Specify a route for a GET request.

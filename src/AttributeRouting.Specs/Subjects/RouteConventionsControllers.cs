@@ -8,7 +8,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RestfulRouteConvention]
+    [RestfulUrlRouteConvention]
     public class RestfulRouteConventionController : Controller
     {
         [GET("Legacy", IsAbsoluteUrl = true)]
@@ -59,8 +59,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RestfulRouteConvention]
-    [RoutePrefix("Prefix")]
+    [RestfulUrlRouteConvention]
+    [UrlRoutePrefix("Prefix")]
     public class RestfulRouteConventionPrefixController : Controller
     {
         public ActionResult Index()
@@ -104,7 +104,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RestfulRouteConvention]
+    [RestfulUrlRouteConvention]
     public class RestfulRouteConventionWithExplicitOrderedRouteController : Controller
     {
         [GET("Primary", ActionPrecedence = 1)]
@@ -114,7 +114,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RestfulRouteConvention]
+    [RestfulUrlRouteConvention]
     public class RestfulRouteConventionWithExplicitRouteController : Controller
     {
         [GET("Legacy", IsAbsoluteUrl = true)]
@@ -124,16 +124,16 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    public class FakeConventionAttribute : RouteConventionAttributeBase
+    public class FakeConventionAttribute : UrlRouteConventionAttributeBase
     {
-        public override IEnumerable<IRouteAttribute> GetRouteAttributes(MethodInfo actionMethod)
+        public override IEnumerable<IUrlRouteAttribute> GetUrlRouteAttributes(MethodInfo actionMethod)
         {
             yield return new GETAttribute(actionMethod.Name);
         }
 
-        public override IEnumerable<RoutePrefixAttribute> GetDefaultRoutePrefixes(Type controllerType)
+        public override IEnumerable<UrlRoutePrefixAttribute> GetDefaultUrlRoutePrefixes(Type controllerType)
         {
-            yield return new RoutePrefixAttribute("Yowza");
+            yield return new UrlRoutePrefixAttribute("Yowza");
         }
     }
 

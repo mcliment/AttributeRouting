@@ -5,7 +5,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RoutePrefix("Issue-218")]
+    [UrlRoutePrefix("Issue-218")]
     public class Issue218TestController : Controller
     {
         [GET("Optional-Query?{categoryId:long?}")]
@@ -27,7 +27,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RoutePrefix("BugFixes")]
+    [UrlRoutePrefix("BugFixes")]
     public class BugFixesController : Controller
     {
         [GET("Gallery/_CenterImage/{guid_Gallery?}/{slideShow?}/{currentController?}/{image?}")]
@@ -37,8 +37,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Cms", AreaUrl = "{culture}/Cms")]
-    [RoutePrefix("Content")]
+    [UrlRouteArea("Cms", AreaUrl = "{culture}/Cms")]
+    [UrlRoutePrefix("Content")]
     public class Issue161TestController : Controller
     {
         [GET("Items?{p:int}")]
@@ -48,8 +48,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Cms", AreaUrl = "{culture}/Cms")]
-    [RoutePrefix("Content")]
+    [UrlRouteArea("Cms", AreaUrl = "{culture}/Cms")]
+    [UrlRoutePrefix("Content")]
     public class Issue161TestHttpController : ApiController
     {
         [GET("Items?{p:int}", RouteName = "Issue161TestHttp")]

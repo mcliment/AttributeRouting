@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RoutePrefix("Trailing-Slash")]
+    [UrlRoutePrefix("Trailing-Slash")]
     public class TrailingSlashesController : Controller
     {
         [GET("")]

@@ -7,7 +7,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Specs.Subjects.Http
 {
-    [RoutePrefix("HttpBugFixes")]
+    [UrlRoutePrefix("HttpBugFixes")]
     public class HttpBugFixesController : ApiController
     {
         [GET("devices(ua={id})")]
@@ -17,7 +17,7 @@ namespace AttributeRouting.Specs.Subjects.Http
         }
     }
 
-    [RoutePrefix("Issue102")]
+    [UrlRoutePrefix("Issue102")]
     public class Issue102TestController : ApiController
     {
         [GET("")]

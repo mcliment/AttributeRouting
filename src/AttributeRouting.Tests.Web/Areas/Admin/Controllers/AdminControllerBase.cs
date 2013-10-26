@@ -3,7 +3,7 @@ using AttributeRouting.Tests.Web.Controllers;
 
 namespace AttributeRouting.Tests.Web.Areas.Admin.Controllers
 {
-    [RouteArea("Admin")]
+    [UrlRouteArea("Admin")]
     public abstract class AdminControllerBase : ControllerBase
     {
     }

@@ -3,7 +3,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Specs.Subjects.Http
 {
-    [DefaultHttpRouteConvention]
+    [DefaultHttpUrlRouteConvention]
     public class DefaultHttpRouteConventionController : ApiController
     {
 

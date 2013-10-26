@@ -4,7 +4,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RouteArea("Users", Subdomain = "users")]
+    [UrlRouteArea("Users", Subdomain = "users")]
     public class SubdomainController : Controller
     {
         [GET("")]
@@ -14,7 +14,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("NoSubdomain")]
+    [UrlRouteArea("NoSubdomain")]
     public class SubdomainControllerWithoutSubdomainInAttribute : Controller
     {
         [GET("")]
@@ -24,7 +24,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Admin", Subdomain = "private", AreaUrl = "admin")]
+    [UrlRouteArea("Admin", Subdomain = "private", AreaUrl = "admin")]
     public class SubdomainWithAreaUrlController : Controller
     {
         [GET("")]

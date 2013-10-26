@@ -38,7 +38,7 @@ Scenario: Generating area routes with an explicit area url when route urls speci
 	Then the route url is "ExplicitArea/DuplicatePrefix"
 	And the data token for "area" is "Area"
 
-Scenario: Generating area routes with the default ctor of the RouteAreaAttribute
+Scenario: Generating area routes with the default ctor of the UrlRouteAreaAttribute
 	Given I have registered the routes for the DefaultRouteAreaController
 	When I fetch the routes for the DefaultRouteArea controller's Index action
 	Then the route url is "Sample/Index"

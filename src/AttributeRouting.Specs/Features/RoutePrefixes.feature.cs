@@ -279,10 +279,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Generating routes with the default ctor of the RoutePrefixAttribute")]
+        [NUnit.Framework.DescriptionAttribute("Generating routes with the default ctor of the UrlRoutePrefixAttribute")]
         public virtual void GeneratingRoutesWithTheDefaultCtorOfTheRoutePrefixAttribute()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generating routes with the default ctor of the RoutePrefixAttribute", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generating routes with the default ctor of the UrlRoutePrefixAttribute", ((string[])(null)));
 #line 93
 this.ScenarioSetup(scenarioInfo);
 #line 95

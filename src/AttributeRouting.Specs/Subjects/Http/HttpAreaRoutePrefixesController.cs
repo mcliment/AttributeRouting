@@ -3,8 +3,8 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Specs.Subjects.Http
 {
-    [RouteArea("ApiArea")]
-    [RoutePrefix("ApiPrefix")]
+    [UrlRouteArea("ApiArea")]
+    [UrlRoutePrefix("ApiPrefix")]
     public class HttpAreaRoutePrefixesController : ApiController
     {
         [GET("Get")]

@@ -12,6 +12,6 @@ namespace AttributeRouting.Tests.Web.Areas.Api.Controllers
         }
     }
 
-    [RoutePrefix("Inherit/Derived")]
+    [UrlRoutePrefix("Inherit/Derived")]
     public class InheritActionsDerivedApiController : InheritActionsApiControllerBase {}
 }

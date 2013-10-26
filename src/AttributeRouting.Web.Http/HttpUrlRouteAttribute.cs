@@ -8,13 +8,13 @@ namespace AttributeRouting.Web.Http
     /// The route information for an action.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]
-    public class HttpRouteAttribute : Attribute, IRouteAttribute
+    public class HttpUrlRouteAttribute : Attribute, IUrlRouteAttribute
     {
         /// <summary>
         /// Specify the route information for an action.
         /// </summary>
         /// <param name="routeUrl">The url that is associated with this action</param>
-        public HttpRouteAttribute(string routeUrl)
+        public HttpUrlRouteAttribute(string routeUrl)
         {
             if (routeUrl == null) throw new ArgumentNullException("routeUrl");
 
@@ -30,7 +30,7 @@ namespace AttributeRouting.Web.Http
         /// </summary>
         /// <param name="routeUrl">The url that is associated with this action</param>
         /// <param name="allowedMethods">The httpMethods against which to constrain the route</param>
-        public HttpRouteAttribute(string routeUrl, params HttpMethod[] allowedMethods)
+        public HttpUrlRouteAttribute(string routeUrl, params HttpMethod[] allowedMethods)
             : this(routeUrl)
         {
             HttpMethods = allowedMethods.Select(m => m.Method.ToUpper()).ToArray();

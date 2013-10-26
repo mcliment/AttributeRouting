@@ -3,7 +3,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Specs.Subjects.Http
 {
-    [RoutePrefix("ApiPrefix")]
+    [UrlRoutePrefix("ApiPrefix")]
     public class HttpRoutePrefixesController : ApiController
     {
         [GET("Get")]
@@ -37,7 +37,7 @@ namespace AttributeRouting.Specs.Subjects.Http
         }
     }
 
-    [RoutePrefix]
+    [UrlRoutePrefix]
     public class HttpDefaultRoutePrefixController : ApiController
     {
         [GET("Index")]
@@ -47,8 +47,8 @@ namespace AttributeRouting.Specs.Subjects.Http
         }
     }
 
-    [RoutePrefix("HttpFirstPrefix", Precedence = 1)]
-    [RoutePrefix("HttpSecondPrefix")]
+    [UrlRoutePrefix("HttpFirstPrefix", Precedence = 1)]
+    [UrlRoutePrefix("HttpSecondPrefix")]
     public class HttpMultipleRoutePrefixController : ApiController
     {
         [GET("Index")]

@@ -11,7 +11,7 @@ namespace AttributeRouting.Web.Mvc
     /// Automatically generates RESTful-style routes for controller actions matching 
     /// Index, New, Create, Show, Edit, Update, Delete, and Destroy.
     /// </summary>
-    public class RestfulRouteConventionAttribute : RouteConventionAttributeBase
+    public class RestfulUrlRouteConventionAttribute : UrlRouteConventionAttributeBase
     {
         // Setup conventions
         private static readonly List<RestfulRouteConventionInfo> Conventions = new List<RestfulRouteConventionInfo>
@@ -26,19 +26,19 @@ namespace AttributeRouting.Web.Mvc
             new RestfulRouteConventionInfo("Destroy", "DELETE", "{id}")
         };
 
-        public override IEnumerable<IRouteAttribute> GetRouteAttributes(MethodInfo actionMethod)
+        public override IEnumerable<IUrlRouteAttribute> GetUrlRouteAttributes(MethodInfo actionMethod)
         {
             var convention = Conventions.SingleOrDefault(c => c.ActionName == actionMethod.Name);
             if (convention != null)
-                yield return BuildRouteAttribute(convention);
+                yield return BuildUrlRouteAttribute(convention);
         }
 
-        public override IEnumerable<RoutePrefixAttribute> GetDefaultRoutePrefixes(Type controllerType)
+        public override IEnumerable<UrlRoutePrefixAttribute> GetDefaultUrlRoutePrefixes(Type controllerType)
         {
-            yield return new RoutePrefixAttribute(controllerType.GetControllerName());
+            yield return new UrlRoutePrefixAttribute(controllerType.GetControllerName());
         }
 
-        private IRouteAttribute BuildRouteAttribute(RestfulRouteConventionInfo convention)
+        private IUrlRouteAttribute BuildUrlRouteAttribute(RestfulRouteConventionInfo convention)
         {
             switch (convention.HttpMethod)
             {

@@ -34,47 +34,47 @@ namespace AttributeRouting.Framework
                 from controllerType in _configuration.OrderedControllerTypes
                 let controllerIndex = controllerCount++
                 let isAsyncController = controllerType.IsAsyncController()
-                let convention = controllerType.GetCustomAttribute<RouteConventionAttributeBase>(true)
-                let routeAreaAttribute = GetRouteAreaAttribute(controllerType, convention)
-                let subdomain = GetAreaSubdomain(routeAreaAttribute)
+                let convention = controllerType.GetCustomAttribute<UrlRouteConventionAttributeBase>(true)
+                let urlRouteAreaAttribute = GetUrlRouteAreaAttribute(controllerType, convention)
+                let subdomain = GetAreaSubdomain(urlRouteAreaAttribute)
                 // Each action
                 from actionMethod in controllerType.GetActionMethods(inheritActionsFromBaseController)
                 let actionName = GetActionName(actionMethod, isAsyncController)
-                let routePrefixAttributes = GetRoutePrefixAttributes(controllerType, convention, actionMethod)
+                let urlRoutePrefixAttributes = GetUrlRoutePrefixAttributes(controllerType, convention, actionMethod)
                 // Each route attribute
-                from routeAttribute in GetRouteAttributes(actionMethod, convention)
+                from urlRouteAttribute in GetUrlRouteAttributes(actionMethod, convention)
                 // Each prefix so that the route is prefixed with each one available.
                 // Using DefaultIfEmpty to simulate the notion of a left-join with the route attribute.
                 // Taking only the first if ignoring route prefixes because prefixes will have no effect.
-                from routePrefixAttribute in routePrefixAttributes.DefaultIfEmpty(null).Take(routeAttribute.IgnoreRoutePrefix ? 1 : int.MaxValue)
+                from urlRoutePrefixAttribute in urlRoutePrefixAttributes.DefaultIfEmpty(null).Take(urlRouteAttribute.IgnoreRoutePrefix ? 1 : int.MaxValue)
                 // Build the specification
                 select new RouteSpecification
                 {
                     ActionMethod = actionMethod,
                     ActionName = actionName,
-                    ActionPrecedence = GetSortableOrder(routeAttribute.ActionPrecedence),
-                    AppendTrailingSlash = routeAttribute.AppendTrailingSlashFlag,
-                    AreaName = GetAreaName(routeAreaAttribute, controllerType),
-                    AreaUrl = GetAreaUrl(routeAreaAttribute, subdomain, controllerType),
-                    AreaUrlTranslationKey = routeAreaAttribute.SafeGet(a => a.TranslationKey),
+                    ActionPrecedence = GetSortableOrder(urlRouteAttribute.ActionPrecedence),
+                    AppendTrailingSlash = urlRouteAttribute.AppendTrailingSlashFlag,
+                    AreaName = GetAreaName(urlRouteAreaAttribute, controllerType),
+                    AreaUrl = GetAreaUrl(urlRouteAreaAttribute, subdomain, controllerType),
+                    AreaUrlTranslationKey = urlRouteAreaAttribute.SafeGet(a => a.TranslationKey),
                     ControllerIndex = controllerIndex,
                     ControllerName = controllerType.GetControllerName(),
-                    ControllerPrecedence = GetSortableOrder(routeAttribute.ControllerPrecedence),
+                    ControllerPrecedence = GetSortableOrder(urlRouteAttribute.ControllerPrecedence),
                     ControllerType = controllerType,
-                    HttpMethods = routeAttribute.HttpMethods,
-                    IgnoreAreaUrl = routeAttribute.IgnoreAreaUrl,
-                    IgnoreRoutePrefix = routeAttribute.IgnoreRoutePrefix,
-                    IsAbsoluteUrl = routeAttribute.IsAbsoluteUrl,
-                    PrefixPrecedence = GetSortableOrder(routePrefixAttribute.SafeGet(a => a.Precedence, int.MaxValue)),
-                    PreserveCaseForUrlParameters = routeAttribute.PreserveCaseForUrlParametersFlag,
-                    RouteName = routeAttribute.RouteName,
-                    RoutePrefixUrl = GetRoutePrefixUrl(routePrefixAttribute, controllerType),
-                    RoutePrefixUrlTranslationKey = routePrefixAttribute.SafeGet(a => a.TranslationKey),
-                    RouteUrl = routeAttribute.RouteUrl ?? actionName,
-                    RouteUrlTranslationKey = routeAttribute.TranslationKey,
-                    SitePrecedence = GetSortableOrder(routeAttribute.SitePrecedence),
+                    HttpMethods = urlRouteAttribute.HttpMethods,
+                    IgnoreAreaUrl = urlRouteAttribute.IgnoreAreaUrl,
+                    IgnoreRoutePrefix = urlRouteAttribute.IgnoreRoutePrefix,
+                    IsAbsoluteUrl = urlRouteAttribute.IsAbsoluteUrl,
+                    PrefixPrecedence = GetSortableOrder(urlRoutePrefixAttribute.SafeGet(a => a.Precedence, int.MaxValue)),
+                    PreserveCaseForUrlParameters = urlRouteAttribute.PreserveCaseForUrlParametersFlag,
+                    RouteName = urlRouteAttribute.RouteName,
+                    RoutePrefixUrl = GetUrlRoutePrefixUrl(urlRoutePrefixAttribute, controllerType),
+                    RoutePrefixUrlTranslationKey = urlRoutePrefixAttribute.SafeGet(a => a.TranslationKey),
+                    RouteUrl = urlRouteAttribute.RouteUrl ?? actionName,
+                    RouteUrlTranslationKey = urlRouteAttribute.TranslationKey,
+                    SitePrecedence = GetSortableOrder(urlRouteAttribute.SitePrecedence),
                     Subdomain = subdomain,
-                    UseLowercaseRoute = routeAttribute.UseLowercaseRouteFlag,
+                    UseLowercaseRoute = urlRouteAttribute.UseLowercaseRouteFlag,
                 };
 
             // Return specs ordered by route precedence: 
@@ -97,109 +97,109 @@ namespace AttributeRouting.Framework
             return actionName;
         }
 
-        private static IEnumerable<IRouteAttribute> GetRouteAttributes(MethodInfo actionMethod, RouteConventionAttributeBase convention)
+        private static IEnumerable<IUrlRouteAttribute> GetUrlRouteAttributes(MethodInfo actionMethod, UrlRouteConventionAttributeBase convention)
         {
-            var attributes = new List<IRouteAttribute>();
+            var attributes = new List<IUrlRouteAttribute>();
 
             // Add convention-based attributes
             if (convention != null)
             {
-                attributes.AddRange(convention.GetRouteAttributes(actionMethod));
+                attributes.AddRange(convention.GetUrlRouteAttributes(actionMethod));
             }
 
             // Add explicitly-defined attributes
-            attributes.AddRange(actionMethod.GetCustomAttributes<IRouteAttribute>(false));
+            attributes.AddRange(actionMethod.GetCustomAttributes<IUrlRouteAttribute>(false));
 
             return attributes;
         }
 
-        private static RouteAreaAttribute GetRouteAreaAttribute(Type controllerType, RouteConventionAttributeBase convention)
+        private static UrlRouteAreaAttribute GetUrlRouteAreaAttribute(Type controllerType, UrlRouteConventionAttributeBase convention)
         {
-            return controllerType.GetCustomAttribute<RouteAreaAttribute>(true)
-                   ?? convention.SafeGet(x => x.GetDefaultRouteArea(controllerType));
+            return controllerType.GetCustomAttribute<UrlRouteAreaAttribute>(true)
+                   ?? convention.SafeGet(x => x.GetDefaultUrlRouteArea(controllerType));
         }
 
-        private static string GetAreaName(RouteAreaAttribute routeAreaAttribute, Type controllerType)
+        private static string GetAreaName(UrlRouteAreaAttribute urlRouteAreaAttribute, Type controllerType)
         {
-            if (routeAreaAttribute == null)
+            if (urlRouteAreaAttribute == null)
             {
                 return null;
             }
 
             // If given an area name, then use it.
             // Otherwise, use the last section of the namespace of the controller, as a convention.
-            return routeAreaAttribute.AreaName ?? controllerType.GetConventionalAreaName();
+            return urlRouteAreaAttribute.AreaName ?? controllerType.GetConventionalAreaName();
         }
 
-        private static string GetAreaUrl(RouteAreaAttribute routeAreaAttribute, string subdomain, Type controllerType)
+        private static string GetAreaUrl(UrlRouteAreaAttribute urlRouteAreaAttribute, string subdomain, Type controllerType)
         {
-            if (routeAreaAttribute == null)
+            if (urlRouteAreaAttribute == null)
             {
                 return null;
             }
 
-            // If a subdomain is specified for the area either in the RouteAreaAttribute 
+            // If a subdomain is specified for the area either in the UrlRouteAreaAttribute 
             // or via configuration, then assume the area url is blank; eg: admin.badass.com.
             // However, our fearless coder can decide to explicitly specify an area url if desired;
             // eg: internal.badass.com/admin.
-            if (subdomain.HasValue() && routeAreaAttribute.AreaUrl.HasNoValue())
+            if (subdomain.HasValue() && urlRouteAreaAttribute.AreaUrl.HasNoValue())
             {
                 return null;
             }
 
             // If we're given an area url or an area name, then use it.
             // Otherwise, get the area name from the namespace of the controller, as a convention.
-            var areaUrlOrName = routeAreaAttribute.AreaUrl ?? routeAreaAttribute.AreaName;
+            var areaUrlOrName = urlRouteAreaAttribute.AreaUrl ?? urlRouteAreaAttribute.AreaName;
             return areaUrlOrName ?? controllerType.GetConventionalAreaName();
         }
 
-        private string GetAreaSubdomain(RouteAreaAttribute routeAreaAttribute)
+        private string GetAreaSubdomain(UrlRouteAreaAttribute urlRouteAreaAttribute)
         {
-            if (routeAreaAttribute == null)
+            if (urlRouteAreaAttribute == null)
             {
                 return null;
             }
 
             // Check for a subdomain override specified via configuration object.
             var subdomainOverride = (from o in _configuration.AreaSubdomainOverrides
-                                     where o.Key == routeAreaAttribute.AreaName
+                                     where o.Key == urlRouteAreaAttribute.AreaName
                                      select o.Value).FirstOrDefault();
 
-            return subdomainOverride ?? routeAreaAttribute.Subdomain;
+            return subdomainOverride ?? urlRouteAreaAttribute.Subdomain;
         }
 
-        private static IEnumerable<RoutePrefixAttribute> GetRoutePrefixAttributes(Type controllerType, RouteConventionAttributeBase convention, MethodInfo actionMethod)
+        private static IEnumerable<UrlRoutePrefixAttribute> GetUrlRoutePrefixAttributes(Type controllerType, UrlRouteConventionAttributeBase convention, MethodInfo actionMethod)
         {
             // If there are any explicit route prefixes defined, use them.
-            var routePrefixAttributes = controllerType.GetCustomAttributes<RoutePrefixAttribute>(true).ToList();
+            var urlRoutePrefixAttributes = controllerType.GetCustomAttributes<UrlRoutePrefixAttribute>(true).ToList();
 
             // Otherwise apply conventional prefixes.
-            if (!routePrefixAttributes.Any() && convention != null)
+            if (!urlRoutePrefixAttributes.Any() && convention != null)
             {
-                var oldConventionalRoutePrefix = convention.GetDefaultRoutePrefix(actionMethod);
+                var oldConventionalRoutePrefix = convention.GetDefaultUrlRoutePrefix(actionMethod);
                 if (oldConventionalRoutePrefix.HasValue())
                 {
-                    routePrefixAttributes.Add(new RoutePrefixAttribute(oldConventionalRoutePrefix));
+                    urlRoutePrefixAttributes.Add(new UrlRoutePrefixAttribute(oldConventionalRoutePrefix));
                 }
                 else
                 {
-                    routePrefixAttributes.AddRange(convention.GetDefaultRoutePrefixes(controllerType));
+                    urlRoutePrefixAttributes.AddRange(convention.GetDefaultUrlRoutePrefixes(controllerType));
                 }
             }
 
-            return routePrefixAttributes.OrderBy(a => GetSortableOrder(a.Precedence));
+            return urlRoutePrefixAttributes.OrderBy(a => GetSortableOrder(a.Precedence));
         }
 
-        private static string GetRoutePrefixUrl(RoutePrefixAttribute routePrefixAttribute, Type controllerType)
+        private static string GetUrlRoutePrefixUrl(UrlRoutePrefixAttribute urlRoutePrefixAttribute, Type controllerType)
         {
-            if (routePrefixAttribute == null)
+            if (urlRoutePrefixAttribute == null)
             {
                 return null;
             }
 
             // If we're given route prefix url, use it.
             // Otherwise, use the controller name as a convention.
-            return routePrefixAttribute.Url ?? controllerType.GetControllerName();
+            return urlRoutePrefixAttribute.Url ?? controllerType.GetControllerName();
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 
 namespace AttributeRouting.Tests.Web.Areas.Api.Controllers
 {
-    [RouteArea("api")]
+    [UrlRouteArea("api")]
     public class BaseApiController : ApiController
     {
     }

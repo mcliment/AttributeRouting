@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RoutePrefix("Prefix")]
+    [UrlRoutePrefix("Prefix")]
     public class RoutePrefixesController : Controller
     {
         [GET("Index")]
@@ -37,8 +37,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Area")]
-    [RoutePrefix("Prefix")]
+    [UrlRouteArea("Area")]
+    [UrlRoutePrefix("Prefix")]
     public class AreaRoutePrefixesController : Controller
     {
         [GET("Index")]
@@ -66,7 +66,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RoutePrefix]
+    [UrlRoutePrefix]
     public class DefaultRoutePrefixController : Controller
     {
         [GET("Index")]
@@ -76,8 +76,8 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RoutePrefix("FirstPrefix", Precedence = 1)]
-    [RoutePrefix("SecondPrefix")]
+    [UrlRoutePrefix("FirstPrefix", Precedence = 1)]
+    [UrlRoutePrefix("SecondPrefix")]
     public class MultipleRoutePrefixController : Controller
     {
         [GET("Index", ActionPrecedence = 1)]

@@ -12,7 +12,7 @@ namespace AttributeRouting.Web.Http
     /// Sets up the default Web API route convention
     /// See: http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
     /// </summary>
-    public class DefaultHttpRouteConventionAttribute : RouteConventionAttributeBase
+    public class DefaultHttpUrlRouteConventionAttribute : UrlRouteConventionAttributeBase
     {
         private readonly List<HttpRouteConventionInfo> _alreadyUsed = new List<HttpRouteConventionInfo>();
 
@@ -31,7 +31,7 @@ namespace AttributeRouting.Web.Http
             new HttpRouteConventionInfo(HttpMethod.Put, "{id}")
         };
 
-        public override IEnumerable<IRouteAttribute> GetRouteAttributes(MethodInfo actionMethod)
+        public override IEnumerable<IUrlRouteAttribute> GetUrlRouteAttributes(MethodInfo actionMethod)
         {
             // Logic from ApiControllerActionSelector
 
@@ -58,7 +58,7 @@ namespace AttributeRouting.Web.Http
                         // Check first parameter, if it requires ID
                         if (!requiresId || (actionMethod.GetParameters().Length > 0 && actionMethod.GetParameters()[0].Name.Equals("id", StringComparison.OrdinalIgnoreCase)))
                         {
-                            yield return BuildRouteAttribute(c);
+                            yield return BuildUrlRouteAttribute(c);
 
                             _alreadyUsed.Add(c);
                         }
@@ -67,12 +67,12 @@ namespace AttributeRouting.Web.Http
             }
         }
 
-        public override IEnumerable<RoutePrefixAttribute> GetDefaultRoutePrefixes(Type controllerType)
+        public override IEnumerable<UrlRoutePrefixAttribute> GetDefaultUrlRoutePrefixes(Type controllerType)
         {
-            yield return new RoutePrefixAttribute(controllerType.GetControllerName());
+            yield return new UrlRoutePrefixAttribute(controllerType.GetControllerName());
         }
 
-        private IRouteAttribute BuildRouteAttribute(HttpRouteConventionInfo convention)
+        private IUrlRouteAttribute BuildUrlRouteAttribute(HttpRouteConventionInfo convention)
         {
             switch (convention.HttpMethod.Method)
             {

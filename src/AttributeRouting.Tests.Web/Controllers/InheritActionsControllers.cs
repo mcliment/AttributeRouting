@@ -16,7 +16,7 @@ namespace AttributeRouting.Tests.Web.Controllers
         }
     }
 
-    [RoutePrefix("Inherit/Derived")]
+    [UrlRoutePrefix("Inherit/Derived")]
     public class InheritActionsDerivedController : InheritActionsControllerBase
     {
         

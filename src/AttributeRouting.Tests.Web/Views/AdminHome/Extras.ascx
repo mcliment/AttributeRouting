@@ -47,6 +47,6 @@
 <h4>CodeGen Restful Controllers and Views With T4</h4>
 <p>
     The web project in the AttributeRouting solution includes T4 templates for generating
-    restful controllers decorated with RouteAttributes and for generating restful
+    restful controllers decorated with UrlRouteAttributes and for generating restful
     Create, Edit, and Delete views that use PUT, POST, and DELETE to hit the correct routes.
 </p>

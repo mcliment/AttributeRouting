@@ -4,7 +4,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Specs.Subjects.Http
 {
-    [RoutePrefix("Http-Area-Inline-Constraints/{id:int}")]
+    [UrlRoutePrefix("Http-Area-Inline-Constraints/{id:int}")]
     public class HttpAreaInlineRouteConstraintsController : ApiController
     {
         [GET("Howdy")]
@@ -14,7 +14,7 @@ namespace AttributeRouting.Specs.Subjects.Http
         }
     }
 
-    [RoutePrefix("Http-Prefixed-Inline-Constraints/{id:int}")]
+    [UrlRoutePrefix("Http-Prefixed-Inline-Constraints/{id:int}")]
     public class HttpPrefixedInlineRouteConstraintsController : ApiController
     {
         [GET("Howdy")]
@@ -24,7 +24,7 @@ namespace AttributeRouting.Specs.Subjects.Http
         }
     }
 
-    [RoutePrefix("Http-Inline-Constraints")]
+    [UrlRoutePrefix("Http-Inline-Constraints")]
     public class HttpInlineRouteConstraintsController : ApiController
     {
         [GET("Querystring?{x:int}&{y}")]

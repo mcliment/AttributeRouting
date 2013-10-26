@@ -5,7 +5,7 @@ namespace AttributeRouting.Tests.Web.Areas.Api.Controllers
     /// <summary>
     /// To test issue 146
     /// </summary>
-    [RoutePrefix("upload")]
+    [UrlRoutePrefix("upload")]
     public class UploadController : BaseApiController
     {
         // POST /api/plain

@@ -3,8 +3,8 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RestfulRouteConvention]
-    [RoutePrefix("Conventions")]
+    [RestfulUrlRouteConvention]
+    [UrlRoutePrefix("Conventions")]
     public class RestfulConventionController : ControllerBase
     {
         public ActionResult Index()

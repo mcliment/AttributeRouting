@@ -3,7 +3,7 @@ using AttributeRouting.Web.Http;
 
 namespace AttributeRouting.Tests.Web.Areas.Api.Controllers
 {
-    [RoutePrefix("plain")]
+    [UrlRoutePrefix("plain")]
     public class PlainController : BaseApiController
     {
         // GET /api/plain

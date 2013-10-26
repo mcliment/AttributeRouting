@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RouteArea("Area")]
+    [UrlRouteArea("Area")]
     public class AreasController : Controller
     {
         [GET("Index")]
@@ -37,7 +37,7 @@ namespace AttributeRouting.Specs.Subjects
         }
     }
 
-    [RouteArea("Area", AreaUrl = "ExplicitArea")]
+    [UrlRouteArea("Area", AreaUrl = "ExplicitArea")]
     public class ExplicitAreaUrlController : Controller
     {
         [GET("Index")]

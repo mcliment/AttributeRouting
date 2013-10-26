@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RoutePrefix("Constraints")]
+    [UrlRoutePrefix("Constraints")]
     public class ConstraintsController : Controller
     {
         [GET("Int/{x:int}")]

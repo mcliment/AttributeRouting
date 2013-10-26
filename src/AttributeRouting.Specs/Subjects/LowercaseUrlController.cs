@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Specs.Subjects
 {
-    [RoutePrefix("LowercaseUrl")]
+    [UrlRoutePrefix("LowercaseUrl")]
     public class LowercaseUrlController : Controller
     {
         [GET("Hello/{userName}/Goodbye")]

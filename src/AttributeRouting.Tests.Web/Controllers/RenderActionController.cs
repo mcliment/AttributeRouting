@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RoutePrefix("RenderAction")]
+    [UrlRoutePrefix("RenderAction")]
     public class RenderActionController : Controller
     {
         [GET("")]
@@ -18,7 +18,7 @@ namespace AttributeRouting.Tests.Web.Controllers
             return View();
         }
 
-        [AttributeRouting.Web.Mvc.Route("Partial")]
+        [UrlRoute("Partial")]
         public ActionResult Partial()
         {
             return View();

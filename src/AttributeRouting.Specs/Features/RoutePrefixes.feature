@@ -90,7 +90,7 @@ Scenario: Generating routes when a route area and route prefix are defined and t
 	When I fetch the routes for the HttpAreaRoutePrefixes controller's RelativeUrlIsAreaUrl action
 	Then the route url is "ApiArea/ApiPrefix/ApiArea"
 
-Scenario: Generating routes with the default ctor of the RoutePrefixAttribute
+Scenario: Generating routes with the default ctor of the UrlRoutePrefixAttribute
 	# MVC
 	Given I have registered the routes for the DefaultRoutePrefixController
 	When I fetch the routes for the DefaultRoutePrefix controller's Index action

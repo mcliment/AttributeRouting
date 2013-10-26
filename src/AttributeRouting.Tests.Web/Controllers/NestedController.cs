@@ -3,7 +3,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace AttributeRouting.Tests.Web.Controllers
 {
-    [RoutePrefix("Resources/{resourceId}")]    
+    [UrlRoutePrefix("Resources/{resourceId}")]    
     public class NestedController : ControllerBase
     {
         [GET("Nested")]
