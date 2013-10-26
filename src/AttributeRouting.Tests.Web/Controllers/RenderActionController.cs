@@ -18,7 +18,7 @@ namespace AttributeRouting.Tests.Web.Controllers
             return View();
         }
 
-        [Route("Partial")]
+        [AttributeRouting.Web.Mvc.Route("Partial")]
         public ActionResult Partial()
         {
             return View();
