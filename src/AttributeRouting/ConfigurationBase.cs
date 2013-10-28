@@ -281,10 +281,11 @@ namespace AttributeRouting
 
         protected void RegisterDefaultInlineRouteConstraints<TRouteConstraint>(Assembly assembly)
         {
-            var inlineConstraintTypes = from t in assembly.GetTypes()
-                                        where typeof(TRouteConstraint).IsAssignableFrom(t)
-                                              && typeof(IAttributeRouteConstraint).IsAssignableFrom(t)
-                                        select t;
+            var inlineConstraintTypes = (from t in assembly.GetTypes()
+                                        where typeof (TRouteConstraint).IsAssignableFrom(t)
+                                        && typeof (IAttributeRouteConstraint).IsAssignableFrom(t)
+                                        && !t.IsGenericTypeDefinition 
+                                        select t).ToArray() ;
 
             foreach (var inlineConstraintType in inlineConstraintTypes)
             {

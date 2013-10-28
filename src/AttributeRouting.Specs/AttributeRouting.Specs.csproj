@@ -128,10 +128,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RouteAreas.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\RoutePrefixes.feature.cs">
+    <Compile Include="Features\UrlRoutePrefixes.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RoutePrefixes.feature</DependentUpon>
+      <DependentUpon>UrlRoutePrefixes.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\RouteConstraints.feature.cs">
       <AutoGen>True</AutoGen>
@@ -177,7 +177,7 @@
     <Compile Include="Subjects\Http\HttpInlineRouteConstraintsControllers.cs" />
     <Compile Include="Subjects\Http\HttpRouteDefaultsController.cs" />
     <Compile Include="Subjects\Http\HttpRoutePrecedenceControllers.cs" />
-    <Compile Include="Subjects\Http\HttpRoutePrefixesController.cs" />
+    <Compile Include="Subjects\Http\HttpUrlRoutePrefixesController.cs" />
     <Compile Include="Subjects\Http\HttpStandardUsageController.cs" />
     <Compile Include="Subjects\InheritedActionControllers.cs" />
     <Compile Include="Subjects\InlineRouteConstraintsControllers.cs" />
@@ -193,6 +193,7 @@
     <Compile Include="Subjects\SubdomainControllers.cs" />
     <Compile Include="Subjects\LocalizationControllers.cs" />
     <Compile Include="Subjects\TrailingSlashesController.cs" />
+    <Compile Include="Subjects\UrlRoutePrefixesController.cs" />
     <Compile Include="Tests\Extensions\UrlHelperExtensionTests.cs" />
     <Compile Include="Tests\Localization\AttributeRouteTests.cs" />
     <Compile Include="Tests\TrailingSlashes\AttributeRouteTests.cs" />
@@ -222,9 +223,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RouteAreas.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\RoutePrefixes.feature">
+    <None Include="Features\UrlRoutePrefixes.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>RoutePrefixes.feature.cs</LastGenOutput>
+      <LastGenOutput>UrlRoutePrefixes.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\RouteConstraints.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

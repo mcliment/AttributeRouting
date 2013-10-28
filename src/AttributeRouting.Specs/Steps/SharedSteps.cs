@@ -11,6 +11,7 @@ using AttributeRouting.Specs.Subjects;
 using AttributeRouting.Specs.Subjects.Http;
 using AttributeRouting.Specs.Tests;
 using AttributeRouting.Web.Constraints;
+using AttributeRouting.Web.Http.Constraints;
 using AttributeRouting.Web.Http.WebHost;
 using AttributeRouting.Web.Mvc;
 using NUnit.Framework;
@@ -31,8 +32,8 @@ namespace AttributeRouting.Specs.Steps
                 if (_configuration == null)
                 {
                     _configuration = new Configuration();
-                    _configuration.InlineRouteConstraints.Add("color", typeof(EnumRouteConstraint<Color>));
-                    _configuration.InlineRouteConstraints.Add("colorValue", typeof(EnumValueRouteConstraint<Color>));
+                    _configuration.InlineRouteConstraints.Add("color", typeof(Web.Constraints.EnumRouteConstraint<Color>));
+                    _configuration.InlineRouteConstraints.Add("colorValue", typeof(Web.Constraints.EnumValueRouteConstraint<Color>));
                 }
                 return _configuration;
             }
@@ -46,8 +47,8 @@ namespace AttributeRouting.Specs.Steps
                 if (_httpConfiguration == null)
                 {
                     _httpConfiguration = new HttpWebConfiguration();
-                    _httpConfiguration.InlineRouteConstraints.Add("color", typeof(EnumRouteConstraint<Color>));
-                    _httpConfiguration.InlineRouteConstraints.Add("colorValue", typeof(EnumValueRouteConstraint<Color>));
+                    _httpConfiguration.InlineRouteConstraints.Add("color", typeof(Web.Http.Constraints.EnumRouteConstraint<Color>));
+                    _httpConfiguration.InlineRouteConstraints.Add("colorValue", typeof(Web.Http.Constraints.EnumValueRouteConstraint<Color>));
                 }
                 return _httpConfiguration;
             }
@@ -62,16 +63,16 @@ namespace AttributeRouting.Specs.Steps
             RouteTable.Routes.MapAttributeRoutes(x =>
             {
                 x.AddRoutesFromAssemblyOf<StandardUsageController>();
-                x.InlineRouteConstraints.Add("color", typeof(EnumRouteConstraint<Color>));
-                x.InlineRouteConstraints.Add("colorValue", typeof(EnumValueRouteConstraint<Color>));
+                x.InlineRouteConstraints.Add("color", typeof(Web.Constraints.EnumRouteConstraint<Color>));
+                x.InlineRouteConstraints.Add("colorValue", typeof(Web.Constraints.EnumValueRouteConstraint<Color>));
                 x.InheritActionsFromBaseController = true;
             });
 
             GlobalConfiguration.Configuration.Routes.MapHttpAttributeRoutes(x =>
             {
                 x.AddRoutesFromAssemblyOf<HttpStandardUsageController>();
-                x.InlineRouteConstraints.Add("color", typeof(EnumRouteConstraint<Color>));
-                x.InlineRouteConstraints.Add("colorValue", typeof(EnumValueRouteConstraint<Color>));
+                x.InlineRouteConstraints.Add("color", typeof(Web.Http.Constraints.EnumRouteConstraint<Color>));
+                x.InlineRouteConstraints.Add("colorValue", typeof(Web.Http.Constraints.EnumValueRouteConstraint<Color>));
                 x.InheritActionsFromBaseController = true;
             });
         }
@@ -88,8 +89,8 @@ namespace AttributeRouting.Specs.Steps
                 GlobalConfiguration.Configuration.Routes.MapHttpAttributeRoutes(x =>
                 {
                     x.AddRoutesFromController(type);
-                    x.InlineRouteConstraints.Add("color", typeof(EnumRouteConstraint<Color>));
-                    x.InlineRouteConstraints.Add("colorValue", typeof(EnumValueRouteConstraint<Color>));
+                    x.InlineRouteConstraints.Add("color", typeof(Web.Http.Constraints.EnumRouteConstraint<Color>));
+                    x.InlineRouteConstraints.Add("colorValue", typeof(Web.Http.Constraints.EnumValueRouteConstraint<Color>));
                     x.InheritActionsFromBaseController = true;
                 });                
             }
@@ -98,8 +99,8 @@ namespace AttributeRouting.Specs.Steps
                 RouteTable.Routes.MapAttributeRoutes(x =>
                 {
                     x.AddRoutesFromController(type);
-                    x.InlineRouteConstraints.Add("color", typeof(EnumRouteConstraint<Color>));
-                    x.InlineRouteConstraints.Add("colorValue", typeof(EnumValueRouteConstraint<Color>));
+                    x.InlineRouteConstraints.Add("color", typeof(Web.Constraints.EnumRouteConstraint<Color>));
+                    x.InlineRouteConstraints.Add("colorValue", typeof(Web.Constraints.EnumValueRouteConstraint<Color>));
                     x.InheritActionsFromBaseController = true;
                 });
             }
@@ -221,7 +222,7 @@ namespace AttributeRouting.Specs.Steps
             {
                 r.SetupGet(x => x.HttpMethod).Returns(requestMethod);
                 r.SetupGet(x => x.AppRelativeCurrentExecutionFilePath).Returns("~/" + Regex.Replace(pathAndQuery[0], @"[{}]", ""));
-                
+                r.SetupGet(x => x.Url).Returns(new Uri("http://localhost/" + Regex.Replace(pathAndQuery[0], @"[{}]", ""), UriKind.Absolute));
                 if (pathAndQuery.Length > 1)
                 {
                     r.SetupGet(x => x.QueryString).Returns(HttpUtility.ParseQueryString(pathAndQuery[1]));

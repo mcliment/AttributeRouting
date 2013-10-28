@@ -10,7 +10,7 @@ Scenario Outline: Inline constraints
 	Given I have registered the routes for the HttpInlineRouteConstraintsController
 	When I fetch the routes for the HttpInlineRouteConstraints controller's <actionName> action
 	Then the route url is "Http-Inline-Constraints/<actionName>/{x}"
-	And the parameter "x" is constrained by an inline AttributeRouting.Web.Constraints.<constraintTypeName>
+	And the parameter "x" is constrained by an inline AttributeRouting.Web.Http.Constraints.<constraintTypeName>
 	Examples: 
 	| actionName  | constraintTypeName       |
 	| Alpha       | AlphaRouteConstraint     |
@@ -59,8 +59,8 @@ Scenario: Multiple inline constraints per url segment
 	Given I have registered the routes for the HttpInlineRouteConstraintsController
 	When I fetch the routes for the HttpInlineRouteConstraints controller's MultipleWithinUrlSegment action
 	Then the route url is "Http-Inline-Constraints/avatar/{width}x{height}/{image}"
-	And the parameter "width" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
-	And the parameter "height" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
+	And the parameter "width" is constrained by an inline AttributeRouting.Web.Http.Constraints.IntRouteConstraint
+	And the parameter "height" is constrained by an inline AttributeRouting.Web.Http.Constraints.IntRouteConstraint
 
 Scenario: Inline constraints specified in the UrlRoutePrefixAttribute
 	# MVC
@@ -72,7 +72,7 @@ Scenario: Inline constraints specified in the UrlRoutePrefixAttribute
 	Given I have registered the routes for the HttpPrefixedInlineRouteConstraintsController
 	When I fetch the routes for the HttpPrefixedInlineRouteConstraints controller's Index action
 	Then the route url is "Http-Prefixed-Inline-Constraints/{id}/Howdy"
-	And the parameter "id" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
+	And the parameter "id" is constrained by an inline AttributeRouting.Web.Http.Constraints.IntRouteConstraint
 
 Scenario: Inline constraints specified in the UrlRouteAreaAttribute
 	# MVC
@@ -84,7 +84,7 @@ Scenario: Inline constraints specified in the UrlRouteAreaAttribute
 	Given I have registered the routes for the HttpAreaInlineRouteConstraintsController
 	When I fetch the routes for the HttpAreaInlineRouteConstraints controller's Index action
 	Then the route url is "Http-Area-Inline-Constraints/{id}/Howdy"
-	And the parameter "id" is constrained by an inline AttributeRouting.Web.Constraints.IntRouteConstraint
+	And the parameter "id" is constrained by an inline AttributeRouting.Web.Http.Constraints.IntRouteConstraint
 
 Scenario Outline: Matching inline route constraints
 	# MVC

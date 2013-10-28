@@ -1,5 +1,8 @@
-﻿using System.Web;
-using System.Web.Routing;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net.Http;
+using System.Web.Http.Routing;
 using AttributeRouting.Constraints;
 
 namespace AttributeRouting.Web.Http.WebHost.Constraints
@@ -9,18 +12,20 @@ namespace AttributeRouting.Web.Http.WebHost.Constraints
         /// <summary>
         /// Constrains an inbound route by HTTP method.
         /// </summary>
-        public InboundHttpMethodConstraint(params string[] allowedMethods)
+        public InboundHttpMethodConstraint(params HttpMethod[] allowedMethods)
             : base(allowedMethods)
         {
-        }
-
-        protected override bool Match(HttpContextBase httpContext, Route route, string parameterName,
-                                      RouteValueDictionary values, RouteDirection routeDirection)
+        }       
+        ICollection<string> IInboundHttpMethodConstraint.AllowedMethods
         {
-            if (routeDirection == RouteDirection.UrlGeneration)
+            get { return new ReadOnlyCollection<string>(AllowedMethods.Select(method => method.Method).ToList()); }
+        }
+        protected override bool Match(HttpRequestMessage request, IHttpRoute route, string parameterName, IDictionary<string, object> values, HttpRouteDirection routeDirection)
+        {
+            if (routeDirection == HttpRouteDirection.UriGeneration)
                 return true;
 
-            return base.Match(httpContext, route, parameterName, values, routeDirection);
+            return base.Match(request, route, parameterName, values, routeDirection);
         }
     }
 }

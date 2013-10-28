@@ -29,7 +29,7 @@ Scenario Outline: Generating routes for an MVC controller
 
 Scenario Outline: Generating routes for an API controller
 	Given I have registered the routes for the HttpStandardUsageController
-	When I fetch the routes for the HttpStandardUsageController's <action> action
+	When I fetch the routes for the HttpStandardUsage controller's <action> action
 	Then the route is constrained to <method> requests
 	 And the route url is "<url>"
 	 And the default for "controller" is "HttpStandardUsage"

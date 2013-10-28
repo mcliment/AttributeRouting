@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
-using System.Web.Routing;
+using System.Web.Http.Routing;
 using AttributeRouting.Constraints;
 using AttributeRouting.Framework;
 using AttributeRouting.Helpers;
-using AttributeRouting.Web.Constraints;
-using AttributeRouting.Web.Http.WebHost.Constraints;
+using AttributeRouting.Web.Http.Constraints;
 
 namespace AttributeRouting.Web.Http.WebHost.Framework
 {
@@ -26,7 +26,8 @@ namespace AttributeRouting.Web.Http.WebHost.Framework
 
         public IInboundHttpMethodConstraint CreateInboundHttpMethodConstraint(string[] httpMethods)
         {
-            return new InboundHttpMethodConstraint(httpMethods);
+            var httpMethodTypes = httpMethods.Select(x => new HttpMethod(x)).ToArray();
+            return new InboundHttpMethodConstraint(httpMethodTypes);
         }
 
         public object CreateInlineRouteConstraint(string name, params object[] parameters)
@@ -36,7 +37,7 @@ namespace AttributeRouting.Web.Http.WebHost.Framework
             {
                 var type = inlineRouteConstraints[name];
 
-                if (!typeof(IRouteConstraint).IsAssignableFrom(type))
+                if (!typeof(IHttpRouteConstraint).IsAssignableFrom(type))
                     throw new AttributeRoutingException(
                         "The constraint \"{0}\" must implement System.Web.Routing.IRouteConstraint".FormatWith(type.FullName));
 
@@ -48,17 +49,17 @@ namespace AttributeRouting.Web.Http.WebHost.Framework
 
         public ICompoundRouteConstraint CreateCompoundRouteConstraint(params object[] constraints)
         {
-            return new CompoundRouteConstraint(constraints.Cast<IRouteConstraint>().ToArray());
+            return new CompoundRouteConstraint(constraints.Cast<IHttpRouteConstraint>().ToArray());
         }
 
         public IOptionalRouteConstraint CreateOptionalRouteConstraint(object constraint)
         {
-            return new OptionalRouteConstraint((IRouteConstraint)constraint);
+            return new OptionalRouteConstraint((IHttpRouteConstraint)constraint);
         }
 
         public IQueryStringRouteConstraint CreateQueryStringRouteConstraint(object constraint)
         {
-            return new QueryStringRouteConstraint((IRouteConstraint)constraint);
+            return new QueryStringRouteConstraint((IHttpRouteConstraint)constraint);
         }
     }
 }
