@@ -34,6 +34,7 @@ namespace AttributeRouting.Specs.Tests
             httpContextMock.SetupGet(x => x.Items).Returns(new Dictionary<object, object>());
             httpContextMock.SetupGet(x => x.Request).Returns(requestMock.Object);
             httpContextMock.SetupGet(x => x.Response).Returns(responseMock.Object);
+            httpContextMock.Setup(x => x.GetService(It.IsAny<Type>())).Returns(null);
 
             return httpContextMock;
         }

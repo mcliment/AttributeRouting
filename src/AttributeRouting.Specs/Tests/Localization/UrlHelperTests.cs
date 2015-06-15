@@ -57,6 +57,7 @@ namespace AttributeRouting.Specs.Tests.Localization
 
             // Default culture
             var urlHelper = new UrlHelper(requestContext, RouteTable.Routes);
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
             Assert.That(urlHelper.Action("Index", "Translation", new { area = "Area" }),
                         Is.EqualTo("/Area/Prefix/Index"));
 
