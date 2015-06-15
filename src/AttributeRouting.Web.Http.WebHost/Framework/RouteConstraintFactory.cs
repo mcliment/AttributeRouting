@@ -7,6 +7,7 @@ using AttributeRouting.Constraints;
 using AttributeRouting.Framework;
 using AttributeRouting.Helpers;
 using AttributeRouting.Web.Http.Constraints;
+using InboundHttpMethodConstraint = AttributeRouting.Web.Http.WebHost.Constraints.InboundHttpMethodConstraint;
 
 namespace AttributeRouting.Web.Http.WebHost.Framework
 {
